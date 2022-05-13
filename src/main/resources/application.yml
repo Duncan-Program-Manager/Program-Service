@@ -5,11 +5,9 @@ spring:
     #hibernate:
       #ddl-auto: create
   datasource:
-    url: "jdbc:h2:mem:virtual"
-    username: "sa"
-    password: "password"
-    jpa:
-      database-platform: "org.hibernate.dialect.H2Dialect"
+    url: "jdbc:mysql://82.73.212.90:3307/dpm"
+    username: "2nowabout"
+    password: "SecurePassword1!"
 eureka:
   client:
     serviceUrl:
