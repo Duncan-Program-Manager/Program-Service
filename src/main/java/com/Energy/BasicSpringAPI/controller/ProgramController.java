@@ -36,12 +36,6 @@ public class ProgramController {
         return new ResponseEntity<>(programRepository.findById(id), HttpStatus.OK);
     }
 
-    @GetMapping(value = ProgramEndpoints.GETPROGRAM, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getProgram(@RequestParam String name)
-    {
-        return new ResponseEntity<>(programRepository.getByName(name),HttpStatus.OK);
-    }
-
     @GetMapping(value = ProgramEndpoints.GETPAGINATION)
     public ResponseEntity<?> getPagination(@RequestParam int page)
     {
