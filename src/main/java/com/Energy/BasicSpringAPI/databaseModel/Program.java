@@ -1,6 +1,7 @@
 package com.Energy.BasicSpringAPI.databaseModel;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "Program", schema = "DPMDatabase")
@@ -9,7 +10,10 @@ public class Program {
     private String Name;
     private String Description;
     private String Location;
+    private String Version;
+    private Date UploadDate;
     private boolean UserUpload;
+    private User User;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -53,5 +57,35 @@ public class Program {
     }
     public void setUserUpload(boolean userUpload) {
         UserUpload = userUpload;
+    }
+
+    @Basic
+    @Column(name = "Version", nullable = false)
+    public String getVersion() {
+        return Version;
+    }
+
+    public void setVersion(String version) {
+        Version = version;
+    }
+
+    @Basic
+    @Column(name = "UploadDate")
+    public Date getUploadDate() {
+        return UploadDate;
+    }
+
+    public void setUploadDate(Date uploadDate) {
+        UploadDate = uploadDate;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "Username", nullable = true)
+    public User getUser() {
+        return User;
+    }
+
+    public void setUser(User User) {
+        this.User = User;
     }
 }
