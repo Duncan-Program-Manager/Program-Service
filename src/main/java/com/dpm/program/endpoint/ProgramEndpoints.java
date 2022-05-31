@@ -1,4 +1,4 @@
-package com.Energy.BasicSpringAPI.endpoint;
+package com.dpm.program.endpoint;
 
 public interface ProgramEndpoints {
     String BASE = "/program";

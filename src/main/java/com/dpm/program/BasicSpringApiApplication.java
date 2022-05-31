@@ -1,4 +1,4 @@
-package com.Energy.BasicSpringAPI;
+package com.dpm.program;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

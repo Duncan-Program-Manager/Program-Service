@@ -1,4 +1,4 @@
-package com.Energy.BasicSpringAPI;
+package com.dpm.program;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers("/consumption/**").permitAll()
+                .antMatchers("/program/**").permitAll()
                 .and()
                 .cors()
                 .and()

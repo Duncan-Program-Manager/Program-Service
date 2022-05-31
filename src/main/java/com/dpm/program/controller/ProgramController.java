@@ -1,12 +1,11 @@
-package com.Energy.BasicSpringAPI.controller;
+package com.dpm.program.controller;
 
-import com.Energy.BasicSpringAPI.endpoint.ProgramEndpoints;
-import com.Energy.BasicSpringAPI.repository.ProgramRepository;
+import com.dpm.program.endpoint.ProgramEndpoints;
+import com.dpm.program.repository.ProgramRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,4 +1,4 @@
-package com.Energy.BasicSpringAPI.databaseModel;
+package com.dpm.program.databaseModel;
 
 
 import javax.persistence.*;

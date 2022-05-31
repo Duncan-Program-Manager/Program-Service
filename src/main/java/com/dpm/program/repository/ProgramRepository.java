@@ -1,6 +1,6 @@
-package com.Energy.BasicSpringAPI.repository;
+package com.dpm.program.repository;
 
-import com.Energy.BasicSpringAPI.databaseModel.Program;
+import com.dpm.program.databaseModel.Program;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

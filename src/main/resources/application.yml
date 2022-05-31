@@ -1,9 +1,9 @@
 server:
     port: 8086
 spring:
-  #jpa:
-    #hibernate:
-      #ddl-auto: create
+  rabbitmq:
+    host: "localhost"
+    port: 5672
   datasource:
     url: "jdbc:mysql://82.73.212.90:3307/dpm"
     username: "2nowabout"
