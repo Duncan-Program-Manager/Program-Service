@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProgramRepository extends CrudRepository<Program, Integer> {
-    Program getByName(String name);
+    Program getByName(String Name);
+    Program getByUsername(String Username);
 }

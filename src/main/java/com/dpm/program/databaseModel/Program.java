@@ -13,7 +13,7 @@ public class Program {
     private String Version;
     private Date UploadDate;
     private boolean UserUpload;
-    private User User;
+    private String Username;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -60,7 +60,7 @@ public class Program {
     }
 
     @Basic
-    @Column(name = "Version", nullable = false)
+    @Column(name = "Version", nullable = true)
     public String getVersion() {
         return Version;
     }
@@ -79,13 +79,12 @@ public class Program {
         UploadDate = uploadDate;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "Username", nullable = true)
-    public User getUser() {
-        return User;
+    @Basic
+    @Column
+    public String getUsername() {
+        return Username;
     }
-
-    public void setUser(User User) {
-        this.User = User;
+    public void setUsername(String Username) {
+        this.Username = Username;
     }
 }
