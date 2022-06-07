@@ -7,5 +7,6 @@ public interface ProgramEndpoints {
     String GETPROGRAMBYNAME = "/getwname";
     String TEST = "/test";
     String GETPAGINATION = "/getPagination";
+    String GETALL = "/getall";
 
 }

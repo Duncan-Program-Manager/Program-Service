@@ -51,6 +51,12 @@ public class ProgramController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping(value = ProgramEndpoints.GETALL)
+    public ResponseEntity<?> getAllPrograms()
+    {
+        return new ResponseEntity<>(programService.getAllPrograms(), HttpStatus.OK);
+    }
+
     @PostMapping(value = "/testUpload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> uploadTest(@RequestBody MultipartFile file)
     {

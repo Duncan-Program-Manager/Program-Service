@@ -5,6 +5,6 @@ spring:
     host: "localhost"
     port: 5672
   datasource:
-    url: "jdbc:mysql://82.73.212.90:3307/dpm"
+    url: "jdbc:mysql://82.73.212.90:3307/dpm_programs"
     username: "2nowabout"
     password: "SecurePassword1!"

@@ -9,6 +9,7 @@ import org.springframework.context.LifecycleProcessor;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.util.List;
 
 @Service
 public class ProgramService {
@@ -43,6 +44,11 @@ public class ProgramService {
         program.setVersion(dto.getVersion());
         program.setLocation(path);
         programRepository.save(program);
+    }
+
+    public List<Program> getAllPrograms()
+    {
+        return (List<Program>) programRepository.findAll();
     }
 
     public void uploadTest(File file)
