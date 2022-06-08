@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Program", schema = "DPMDatabase")
+@Table(name = "Program")
 public class Program {
     private int Id;
     private String Name;
@@ -33,7 +33,7 @@ public class Program {
     }
 
     @Basic
-    @Column(name = "Description", nullable = true)
+    @Column(name = "Description", nullable = true, length = 1000, columnDefinition = "text")
     public String getDescription() {
         return Description;
     }

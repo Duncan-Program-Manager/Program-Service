@@ -7,8 +7,13 @@ import com.dpm.program.repository.ProgramRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.LifecycleProcessor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -32,13 +37,23 @@ public class ProgramService {
         return programRepository.getByName(name);
     }
 
-    public void UploadProgram(ProgramDTO dto)
-    {
-        String path = storage.uploadFile(dto.getFile());
+    public void UploadProgram(ProgramDTO dto, MultipartFile file) throws IOException {
+        File filefile = new File(file.getOriginalFilename());
+        try (OutputStream os = new FileOutputStream(filefile)) {
+            os.write(file.getBytes());
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        String path = storage.uploadFile(filefile);
+        if(!filefile.delete())
+        {
+            throw new IOException("failed to delete file");
+        }
         Program program = new Program();
         program.setUsername(dto.getUsername());
         program.setDescription(dto.getDescription());
-        program.setUploadDate(dto.getUploadDate());
+        program.setUploadDate(new Date());
         program.setUserUpload(dto.isUserUpload());
         program.setName(dto.getName());
         program.setVersion(dto.getVersion());

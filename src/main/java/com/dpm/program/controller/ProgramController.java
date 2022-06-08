@@ -1,8 +1,10 @@
 package com.dpm.program.controller;
 
+import com.dpm.program.dto.ProgramDTO;
 import com.dpm.program.endpoint.ProgramEndpoints;
 import com.dpm.program.repository.ProgramRepository;
 import com.dpm.program.service.ProgramService;
+import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -57,10 +59,22 @@ public class ProgramController {
         return new ResponseEntity<>(programService.getAllPrograms(), HttpStatus.OK);
     }
 
+    @PostMapping(value = ProgramEndpoints.UPLOADPROGRAM, consumes = { MediaType.MULTIPART_FORM_DATA_VALUE},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> uploadProgram(@ModelAttribute ProgramDTO dto)
+    {
+        try {
+            programService.UploadProgram(dto, dto.getFile());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @PostMapping(value = "/testUpload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> uploadTest(@RequestBody MultipartFile file)
     {
-        File filefile = new File("src/main/resources/" + file.getOriginalFilename());
+        File filefile = new File(file.getOriginalFilename());
         try (OutputStream os = new FileOutputStream(filefile)) {
             os.write(file.getBytes());
         }
@@ -72,5 +86,4 @@ public class ProgramController {
         filefile.delete();
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }

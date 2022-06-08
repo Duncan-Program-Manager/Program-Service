@@ -11,7 +11,7 @@ import java.io.*;
 
 @Component
 public class DropboxStorage {
-    private static final String ACCESS_TOKEN = "sl.BIsuf6PFOfzZVNJSbyODPiK9WDYSpjsd3CW6rIcxlfflCBRdtx255MV5VfjO6DYR3VL3GMGCoR_4V4Ed_9Mwu4tRdAFdCGCYu70fffD7f2UtsjA2sxOemLdN4RrFb3xunjhatXw";
+    private static final String ACCESS_TOKEN = "sl.BJI2kYRjTORS6EVOjOCzxlwGPy8kKfhASsDflmIxLUlj1cd2gayW21Cc9n6XoBnXZyoAt7cEwetRgubgqLA5e5eqbFmIewFK_CATJAjRZZGrA2ks-K4ex29i5e3pTzkuFIhCcd4";
     private static DbxClientV2 client;
 
 
@@ -31,7 +31,7 @@ public class DropboxStorage {
         }
         System.out.println(account.getName().getDisplayName());
         try (InputStream in = new FileInputStream(file)) {
-            FileMetadata metadata = client.files().uploadBuilder("/" + file.getName())
+            FileMetadata metadata = client.files().uploadBuilder("/" + file.getName().toLowerCase())
                     .uploadAndFinish(in);
             System.out.println(metadata);
             return metadata.getPathLower();

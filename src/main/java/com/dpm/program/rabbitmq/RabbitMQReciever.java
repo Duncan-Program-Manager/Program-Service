@@ -14,6 +14,8 @@ import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 @Service
 public class RabbitMQReciever implements RabbitListenerConfigurer {
 
@@ -39,8 +41,10 @@ public class RabbitMQReciever implements RabbitListenerConfigurer {
             ObjectMapper mapper = new ObjectMapper();
             try {
                 ProgramDTO dto = mapper.readValue(jsonObject.toString(), ProgramDTO.class);
-                programService.UploadProgram(dto);
+                programService.UploadProgram(dto, null);
             } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

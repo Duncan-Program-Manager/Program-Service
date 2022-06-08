@@ -1,5 +1,7 @@
 package com.dpm.program.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.File;
 import java.util.Date;
 
@@ -7,16 +9,14 @@ public class ProgramDTO {
     private String Name;
     private String Description;
     private String Version;
-    private Date UploadDate;
     private boolean UserUpload;
     private String Username;
-    private File file;
+    private MultipartFile file;
 
-    public ProgramDTO(String name, String description, String version, Date uploadDate, boolean userUpload, String username, File file) {
+    public ProgramDTO(String name, String description, String version, boolean userUpload, String username, MultipartFile file) {
         Name = name;
         Description = description;
         Version = version;
-        UploadDate = uploadDate;
         UserUpload = userUpload;
         Username = username;
         this.file = file;
@@ -46,14 +46,6 @@ public class ProgramDTO {
         Version = version;
     }
 
-    public Date getUploadDate() {
-        return UploadDate;
-    }
-
-    public void setUploadDate(Date uploadDate) {
-        UploadDate = uploadDate;
-    }
-
     public boolean isUserUpload() {
         return UserUpload;
     }
@@ -70,11 +62,11 @@ public class ProgramDTO {
         Username = username;
     }
 
-    public File getFile() {
+    public MultipartFile getFile() {
         return file;
     }
 
-    public void setFile(File file) {
+    public void setFile(MultipartFile file) {
         this.file = file;
     }
 }

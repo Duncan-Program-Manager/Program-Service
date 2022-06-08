@@ -1,6 +1,10 @@
 server:
     port: 8085
 spring:
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
   rabbitmq:
     host: "localhost"
     port: 5672
@@ -8,3 +12,6 @@ spring:
     url: "jdbc:mysql://82.73.212.90:3307/dpm_programs"
     username: "2nowabout"
     password: "SecurePassword1!"
+  jpa:
+    hibernate:
+      ddl-auto: update
