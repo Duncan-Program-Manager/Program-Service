@@ -40,7 +40,7 @@ public class userMQConfig {
 
     @Bean
     Binding startBinding(@Qualifier("userQueue") Queue queue, @Qualifier("dpmExchange") DirectExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with("watcherz.events.bank");
+        return BindingBuilder.bind(queue).to(exchange).with(routingKey);
     }
 
     @Bean
