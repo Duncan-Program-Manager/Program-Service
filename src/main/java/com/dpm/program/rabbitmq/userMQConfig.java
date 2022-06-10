@@ -29,7 +29,7 @@ public class userMQConfig {
     }
 
     @Bean
-    Queue virusScannerQueue() {
+    Queue userQueue() {
         return new Queue(queue, true);
     }
 
@@ -39,7 +39,7 @@ public class userMQConfig {
     }
 
     @Bean
-    Binding startBinding(@Qualifier("virusScannerQueue") Queue queue, @Qualifier("dpmExchange") DirectExchange exchange) {
+    Binding startBinding(@Qualifier("userQueue") Queue queue, @Qualifier("dpmExchange") DirectExchange exchange) {
         return BindingBuilder.bind(queue).to(exchange).with("watcherz.events.bank");
     }
 
