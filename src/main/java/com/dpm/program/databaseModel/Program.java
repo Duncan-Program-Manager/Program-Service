@@ -80,7 +80,7 @@ public class Program {
     }
 
     @Basic
-    @Column
+    @Column(name = "Username")
     public String getUsername() {
         return Username;
     }

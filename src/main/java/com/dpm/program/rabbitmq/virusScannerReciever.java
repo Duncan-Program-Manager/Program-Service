@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageListener;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.annotation.RabbitListenerConfigurer;
 import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
@@ -17,16 +18,12 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 @Service
-public class RabbitMQReciever implements RabbitListenerConfigurer {
+public class virusScannerReciever implements MessageListener {
 
     @Autowired
     private ProgramService programService;
 
-    @Override
-    public void configureRabbitListeners(RabbitListenerEndpointRegistrar rabbitListenerEndpointRegistrar) {
-    }
-    @RabbitListener(queues = "${rabbitmq.queue}")
-    public void receivedMessage(Message message) {
+    public void onMessage(Message message) {
         JSONParser parser = new JSONParser();
         JSONObject json = null;
         try {
@@ -37,7 +34,7 @@ public class RabbitMQReciever implements RabbitListenerConfigurer {
         System.out.println(json);
         if(json.get("method").equals("newProgram"))
         {
-            JSONObject jsonObject = (JSONObject) json.get("dto");
+            JSONObject jsonObject = (JSONObject) json.get("data");
             ObjectMapper mapper = new ObjectMapper();
             try {
                 ProgramDTO dto = mapper.readValue(jsonObject.toString(), ProgramDTO.class);

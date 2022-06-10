@@ -61,6 +61,15 @@ public class ProgramService {
         programRepository.save(program);
     }
 
+    public void deleteUserDataFromPrograms(String username)
+    {
+        List<Program> programsFromUser = programRepository.getAllByUsername(username);
+        for (Program program: programsFromUser) {
+            program.setUsername("");
+            programRepository.save(program);
+        }
+    }
+
     public List<Program> getAllPrograms()
     {
         return (List<Program>) programRepository.findAll();

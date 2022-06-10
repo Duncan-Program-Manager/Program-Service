@@ -8,7 +8,9 @@ import java.util.Date;
 public class ProgramDTO {
     private String Name;
     private String Description;
+    private String Location;
     private String Version;
+    private Date UploadDate;
     private boolean UserUpload;
     private String Username;
     private MultipartFile file;
@@ -18,7 +20,7 @@ public class ProgramDTO {
         Description = description;
         Version = version;
         UserUpload = userUpload;
-        Username = username;
+        username = username;
         this.file = file;
     }
 
