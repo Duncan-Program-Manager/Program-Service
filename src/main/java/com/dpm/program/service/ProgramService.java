@@ -3,6 +3,7 @@ package com.dpm.program.service;
 import com.dpm.program.cloudstorage.DropboxStorage;
 import com.dpm.program.databaseModel.Program;
 import com.dpm.program.dto.ProgramDTO;
+import com.dpm.program.dto.ProgramRecieveDTO;
 import com.dpm.program.repository.ProgramRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.LifecycleProcessor;
@@ -37,7 +38,7 @@ public class ProgramService {
         return programRepository.getByName(name);
     }
 
-    public void UploadProgram(ProgramDTO dto, MultipartFile file) throws IOException {
+    public void UploadProgram(ProgramRecieveDTO dto, MultipartFile file) throws IOException {
         File filefile = new File(file.getOriginalFilename());
         try (OutputStream os = new FileOutputStream(filefile)) {
             os.write(file.getBytes());

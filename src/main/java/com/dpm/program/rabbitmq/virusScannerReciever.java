@@ -1,6 +1,7 @@
 package com.dpm.program.rabbitmq;
 
 import com.dpm.program.dto.ProgramDTO;
+import com.dpm.program.dto.ProgramRecieveDTO;
 import com.dpm.program.service.ProgramService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,7 +38,7 @@ public class virusScannerReciever implements MessageListener {
             JSONObject jsonObject = (JSONObject) json.get("data");
             ObjectMapper mapper = new ObjectMapper();
             try {
-                ProgramDTO dto = mapper.readValue(jsonObject.toString(), ProgramDTO.class);
+                ProgramRecieveDTO dto = mapper.readValue(jsonObject.toString(), ProgramRecieveDTO.class);
                 programService.UploadProgram(dto, null);
             } catch (JsonProcessingException e) {
                 e.printStackTrace();

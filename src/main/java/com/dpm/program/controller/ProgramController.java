@@ -1,6 +1,7 @@
 package com.dpm.program.controller;
 
 import com.dpm.program.dto.ProgramDTO;
+import com.dpm.program.dto.ProgramRecieveDTO;
 import com.dpm.program.endpoint.ProgramEndpoints;
 import com.dpm.program.repository.ProgramRepository;
 import com.dpm.program.service.ProgramService;
@@ -60,7 +61,7 @@ public class ProgramController {
     }
 
     @PostMapping(value = ProgramEndpoints.UPLOADPROGRAM, consumes = { MediaType.MULTIPART_FORM_DATA_VALUE},produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> uploadProgram(@ModelAttribute ProgramDTO dto)
+    public ResponseEntity<?> uploadProgram(@ModelAttribute ProgramRecieveDTO dto)
     {
         try {
             programService.UploadProgram(dto, dto.getFile());
