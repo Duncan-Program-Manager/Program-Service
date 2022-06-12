@@ -5,6 +5,7 @@ import com.dpm.program.dto.ProgramRecieveDTO;
 import com.dpm.program.service.ProgramService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -35,13 +36,13 @@ public class virusScannerReciever implements MessageListener {
         System.out.println(json);
         if(json.get("method").equals("newProgram"))
         {
+
             JSONObject jsonObject = (JSONObject) json.get("data");
-            ObjectMapper mapper = new ObjectMapper();
+            System.out.println(jsonObject);
+
+            ProgramRecieveDTO dto = new Gson().fromJson(jsonObject.toJSONString(), ProgramRecieveDTO.class);
             try {
-                ProgramRecieveDTO dto = mapper.readValue(jsonObject.toString(), ProgramRecieveDTO.class);
                 programService.UploadProgram(dto, null);
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
