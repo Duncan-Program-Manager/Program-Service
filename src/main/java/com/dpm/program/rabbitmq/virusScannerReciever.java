@@ -6,6 +6,7 @@ import com.dpm.program.service.ProgramService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -39,10 +40,11 @@ public class virusScannerReciever implements MessageListener {
 
             JSONObject jsonObject = (JSONObject) json.get("data");
             System.out.println(jsonObject);
+            Gson gson = new GsonBuilder().setDateFormat("MMM dd, yyyy HH:mm:ss").create();
 
-            ProgramRecieveDTO dto = new Gson().fromJson(jsonObject.toJSONString(), ProgramRecieveDTO.class);
+            ProgramRecieveDTO dto = gson.fromJson(jsonObject.toJSONString(), ProgramRecieveDTO.class);
             try {
-                programService.UploadProgram(dto, null);
+                programService.UploadProgram(dto, dto.getFile());
             } catch (IOException e) {
                 e.printStackTrace();
             }
