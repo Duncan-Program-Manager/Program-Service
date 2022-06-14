@@ -38,10 +38,10 @@ public class ProgramService {
         return programRepository.getByName(name);
     }
 
-    public void UploadProgram(ProgramRecieveDTO dto, MultipartFile file) throws IOException {
-        File filefile = new File(file.getOriginalFilename());
+    public void UploadProgram(ProgramRecieveDTO dto, byte[] file) throws IOException {
+        File filefile = new File(dto.getName());
         try (OutputStream os = new FileOutputStream(filefile)) {
-            os.write(file.getBytes());
+            os.write(file);
         }
         catch (IOException e) {
             e.printStackTrace();

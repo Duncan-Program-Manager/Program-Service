@@ -63,12 +63,12 @@ public class ProgramController {
     @PostMapping(value = ProgramEndpoints.UPLOADPROGRAM, consumes = { MediaType.MULTIPART_FORM_DATA_VALUE},produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> uploadProgram(@ModelAttribute ProgramRecieveDTO dto)
     {
-        try {
-            programService.UploadProgram(dto, dto.getFile());
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+//        try {
+//            programService.UploadProgram(dto, dto.getFile());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
