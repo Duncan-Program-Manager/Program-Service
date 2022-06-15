@@ -11,7 +11,7 @@ import java.io.*;
 
 @Component
 public class DropboxStorage {
-    private static final String ACCESS_TOKEN = "sl.BJI2kYRjTORS6EVOjOCzxlwGPy8kKfhASsDflmIxLUlj1cd2gayW21Cc9n6XoBnXZyoAt7cEwetRgubgqLA5e5eqbFmIewFK_CATJAjRZZGrA2ks-K4ex29i5e3pTzkuFIhCcd4";
+    private static final String ACCESS_TOKEN = "sl.BJlcX86x3soKRKnqDLgvytKsnIS9fA2BDCINtTTsu8pnTT8T-JkE47Ur6Z3Ufu22TSeJjh26He1YYWblvpKEuhcj-qBH4ETQX-dLQJCTOs32DHdxuPzNOlHTdIQ3oMAhCnd840Y";
     private static DbxClientV2 client;
 
     public DropboxStorage()
